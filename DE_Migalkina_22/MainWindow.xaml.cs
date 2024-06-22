@@ -23,6 +23,7 @@ namespace DE_Migalkina_22
     {
         private string connectionString = "Server=LAPTOP-BP9G4DP1\\SQLEXPRESS;Database=kjhdg;Integrated Security=True;";
         private int clientID;
+        private int masterId;
 
         //private string con = "Server=LAPTOP-BP9G4DP1\\SQLEXPRESS;Database=User10;User Id=User10;Password=password;";
 
@@ -80,7 +81,7 @@ namespace DE_Migalkina_22
                     clientWindow.Show();
                     break;
                 case 2:
-                    MechanicWindow mechanicWindow = new MechanicWindow();
+                    MechanicWindow mechanicWindow = new MechanicWindow(masterId);
                     mechanicWindow.Show();
                     break;
                 case 3:

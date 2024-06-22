@@ -26,6 +26,7 @@ namespace DE_Migalkina_22
         public ManagerWindow()
         {
             InitializeComponent();
+            LoadRequests();
         }
 
         private void LoadRequests()

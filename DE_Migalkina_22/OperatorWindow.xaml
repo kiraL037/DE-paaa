@@ -8,12 +8,7 @@
         Title="OperatorWindow" Height="450" Width="800">
     <Grid>
         <StackPanel>
-            <Label Content="Логин"/>
-            <TextBox x:Name="LoginTextBox"/>
-            <Label Content="Пароль"/>
-
-            <PasswordBox x:Name="PasswordTextBox"/>
-            <Button Content="Войти" Click="LoginButton_Click"/>
+            <DataGrid x:Name="showshow" AutoGenerateColumns="True"/>
         </StackPanel>
     </Grid>
 </Window>
