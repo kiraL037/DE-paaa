@@ -7,13 +7,9 @@
         mc:Ignorable="d"
         Title="MechanicWindow" Height="450" Width="800">
     <Grid>
-        <StackPanel>
-            <Label Content="Логин"/>
-            <TextBox x:Name="LoginTextBox"/>
-            <Label Content="Пароль"/>
-
-            <PasswordBox x:Name="PasswordTextBox"/>
-            <Button Content="Войти" Click="LoginButton_Click"/>
+        <StackPanel Margin="20">
+            <Button Content="Добавить комментарий" Click="AddCommentButton_Click"/>
+            <DataGrid Name="showshow" AutoGenerateColumns="True"/>
         </StackPanel>
     </Grid>
 </Window>

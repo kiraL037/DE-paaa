@@ -26,9 +26,26 @@ namespace DE_Migalkina_22
         public Edit(int resuestID)
         {
             InitializeComponent();
-            this.requestID = requestID;
+            this.requestID = resuestID;
+            LoadRequest();
         }
 
+        private void LoadRequest()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("SELECT * FROM Requests WHERE requestID=@requestID", connection);
+                command.Parameters.AddWithValue("@requestID", requestID);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    carTypeTextBox.Text = reader["carType"].ToString();
+                    carModelTextBox.Text = reader["carModel"].ToString();
+                    problemDescriptionTextBox.Text = reader["problemDescription"].ToString();
+                }
+            }
+        }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -36,16 +53,13 @@ namespace DE_Migalkina_22
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    SqlCommand command = new SqlCommand("INSERT INTO Requests (startDate, carType, carModel, problemDescription, 'Новая заявка', requestID)" +
-                        " VALUES (@startDate, @carType, @carModel, @problemDescription, @password, @requestID)", connection);
-                    command.Parameters.AddWithValue("@startDate", DateTime.Now);
+                    SqlCommand command = new SqlCommand("UPDATE Requests SET carType=@carType, carModel=@carModel, problemDescription=@problemDescription WHERE requestID=@requestID", connection);
                     command.Parameters.AddWithValue("@carType", carTypeTextBox.Text);
                     command.Parameters.AddWithValue("@carModel", carModelTextBox.Text);
                     command.Parameters.AddWithValue("@problemDescription", problemDescriptionTextBox.Text);
                     command.Parameters.AddWithValue("@requestID", requestID);
                     command.ExecuteNonQuery();
                 }
-
                 MessageBox.Show("");
                 this.Close();
             }

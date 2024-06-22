@@ -48,9 +48,9 @@ namespace DE_Migalkina_22
         {
             try
             {
-                if (showshow.SelectedItems != null)
+                if (showshow.SelectedItem != null)
                 {
-                    DataRowView dataRowView = (DataRowView)showshow.SelectedItems;
+                    DataRowView dataRowView = (DataRowView)showshow.SelectedItem;
                     Edit edit = new Edit((int)dataRowView["@requestID"]);
                     edit.Show();
                 }
